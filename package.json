@@ -1,0 +1,43 @@
+{
+  "name": "3box-installer",
+  "version": "1.0.0",
+  "description": "s&box installation and rebranding utility",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.4.0"
+  },
+  "build": {
+    "appId": "com.3box.beanstalk313.installer",
+    "productName": "3box Installer",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "Setup/assets/3box logo.ico"
+    },
+    "portable": {
+      "artifactName": "3boxInstaller.exe",
+      "unpackDirName": "3box-temp"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "Setup/",
+        "to": "Setup/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asar": true
+  }
+}

@@ -1,0 +1,6 @@
+[FILENAMES]
+Exe=D:\Applications\3box\sbox-public\sbox.exe
+SaveAs=D:\Applications\3box\sbox-public\sbox.exe
+Log=D:\Applications\3box\rh_script.log
+[COMMANDS]
+-addoverwrite D:\Applications\3box\Setup\assets\3box logo.ico, ICONGROUP, MAINICON, 0

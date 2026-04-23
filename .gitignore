@@ -1,0 +1,4 @@
+dist/
+.sixth/
+node_modules/
+*.log

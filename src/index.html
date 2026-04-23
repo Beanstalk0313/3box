@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>3box Installer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Step Indicator -->
+        <div class="steps" id="step-indicator" style="display:none;">
+            <div class="step" data-step="1"><span class="step-num">1</span><span class="step-label">Folder</span></div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2"><span class="step-num">2</span><span class="step-label">Build</span></div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3"><span class="step-num">3</span><span class="step-label">Steam</span></div>
+            <div class="step-line"></div>
+            <div class="step" data-step="4"><span class="step-num">4</span><span class="step-label">Finish</span></div>
+            <div class="step-line"></div>
+            <div class="step" data-step="5"><span class="step-num">5</span><span class="step-label">Done</span></div>
+        </div>
+
+        <!-- Page 1: Welcome -->
+        <div id="page-welcome" class="page active">
+            <h1>Welcome to the 3box Installer</h1>
+            <p>This wizard will guide you through installing 3box on your system.</p>
+            <button id="btn-start">Next</button>
+        </div>
+
+        <!-- Page 2: Select Path -->
+        <div id="page-path" class="page">
+            <button class="back-btn" data-back="welcome">← Back</button>
+            <h1>Select Installation Folder</h1>
+            <p>Choose a folder with at least <strong>10 GB</strong> of free space. A subfolder named <strong>sbox-public</strong> will be created automatically.</p>
+            <div class="path-selection">
+                <input type="text" id="input-path" readonly placeholder="Click Browse to select a folder...">
+                <button id="btn-browse">Browse</button>
+            </div>
+            <div class="status-row">
+                <div id="env-status" class="status-box">Checking environment...</div>
+                <div id="disk-space" class="status-box">Select a folder to check available space.</div>
+            </div>
+            <div id="standard-actions">
+                <button id="btn-go-download" disabled>Continue</button>
+            </div>
+            <div id="existing-install-actions" class="hidden">
+                <p style="color:#ff7b72; font-size:0.95em; margin:4px 0;">An existing installation was found in this folder.</p>
+                <div class="actions">
+                    <button id="btn-update">Update Existing</button>
+                    <button id="btn-clean-install" class="secondary">Clean Install</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: Download & Build -->
+        <div id="page-download" class="page">
+            <button class="back-btn" data-back="path">← Back</button>
+            <h1>Download and Build</h1>
+            <p>The source code will be downloaded and compiled. This may take 15–30 minutes depending on your system.</p>
+            <button id="btn-download">Start</button>
+            <div id="console-container" class="console">
+                <pre id="console-output"></pre>
+            </div>
+            <button id="btn-go-crack" disabled>Next</button>
+        </div>
+
+        <!-- Page 4: Crack -->
+        <div id="page-crack" class="page">
+            <button class="back-btn" data-back="download">← Back</button>
+            <h1>Steam Emulation</h1>
+            <p>This step must be completed manually using the Steam cracking tool.</p>
+            <ol class="instructions">
+                <li>Click <strong>Open Steam Cracker</strong> below.</li>
+                <li>Click <strong>Select a folder</strong> and choose your <strong>sbox-public</strong> folder.</li>
+                <li>Enter <strong>590830</strong> as the AppID and click <strong>Search</strong>.</li>
+                <li>Click <strong>Crack the game</strong> and wait for it to finish.</li>
+                <li>Close the cracker and click <strong>Next</strong> below.</li>
+            </ol>
+            <div class="actions">
+                <button id="btn-launch-cracker">Open Steam Cracker</button>
+                <button id="btn-go-finalize">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 5: Finalize (Auto) -->
+        <div id="page-finalize" class="page">
+            <h1>Finalizing Installation</h1>
+            <p>Please wait while the 3box branding and icons are applied...</p>
+            <div id="finalize-console" class="console">
+                <pre id="finalize-output"></pre>
+            </div>
+        </div>
+
+        <!-- Page 6: All Done -->
+        <div id="page-done" class="page">
+            <h1>Installation Complete</h1>
+            <p>3box is installed and ready to use.</p>
+            <ul class="instructions">
+                <li>Launch <strong>3box-dev.exe</strong> or <strong>3box-launcher.exe</strong> to start the editor.</li>
+                <li>Launching <strong>3box.exe</strong> will open the s&amp;box menu, but you will be unable to play games because it is disconnected from Steam.</li>
+            </ul>
+            <div class="actions">
+                <button id="btn-create-shortcut" class="secondary">Create Desktop Shortcut</button>
+                <button id="btn-finish">Finish</button>
+            </div>
+            <p id="shortcut-status" style="font-size:0.85em; min-height:1.4em;"></p>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
